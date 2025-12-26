@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Fire Headtrack APK – Free Download</title>
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121826;
+      --accent: #00ff9c;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #ff6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, var(--bg));
+      color: var(--text);
+    }
+
+    .app {
+      width: 100%;
+      max-width: 420px;
+      padding: 28px;
+      background: linear-gradient(180deg, #121826, #0f1522);
+      border-radius: 18px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(0, 255, 156, 0.1);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .info div {
+      background: #0b1020;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .info span {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .download {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #00ff9c, #00c27a);
+      color: #02150e;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 255, 156, 0.35);
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--danger);
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 11px;
+      text-align: center;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <span class="badge">LATEST VERSION</span>
+    <h1>Free Fire Headtrack</h1>
+    <p class="subtitle">Smart aim assist • Faster headshots • Smooth gameplay</p>
+
+    <section class="info">
+      <div>Version<span>v1.0.0</span></div>
+      <div>Size<span>~20 MB</span></div>
+      <div>Android<span>7.0+</span></div>
+      <div>Status<span>Undetected</span></div>
+    </section>
+
+    <!-- Replace APK link below -->
+    <a class="download" href="#" id="downloadBtn" data-href="FreeFire-Headtrack.apk">Download APK</a>
+
+    <p class="note">Enable “Install unknown apps” before installing.</p>
+
+    <footer>
+      © 2025 • Educational use only
+    </footer>
+  </main>
+  <!-- Fake unstoppable loading overlay -->
+  <div id="loader" style="position:fixed;inset:0;background:rgba(5,8,15,.95);display:none;align-items:center;justify-content:center;z-index:9999;">
+    <div style="width:90%;max-width:360px;text-align:center;">
+      <h2 id="stepTitle" style="margin:0 0 8px;font-size:20px;">Preparing download…</h2>
+      <p id="stepDesc" style="margin:0 0 16px;color:#9ca3af;font-size:13px;">Optimizing package • Please wait</p>
+      <div style="background:#0b1020;border-radius:999px;overflow:hidden;height:12px;">
+        <div id="bar" style="height:100%;width:0%;background:linear-gradient(135deg,#00ff9c,#00c27a);"></div>
+      </div>
+      <p id="percent" style="margin-top:10px;font-size:12px;color:#9ca3af;">0%</p>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('downloadBtn');
+    const loader = document.getElementById('loader');
+    const bar = document.getElementById('bar');
+    const percent = document.getElementById('percent');
+    const stepTitle = document.getElementById('stepTitle');
+    const stepDesc = document.getElementById('stepDesc');
+
+    const steps = [
+      { t: 'Preparing download…', d: 'Optimizing package • Please wait' },
+      { t: 'Verifying files…', d: 'Scanning integrity & signatures' },
+      { t: 'Allocating resources…', d: 'Reserving secure channels' },
+      { t: 'Finalizing…', d: 'Almost there • Do not close' }
+    ];
+
+    let stepIndex = 0;
+    let p = 0;
+    let dir = 1;
+
+    function nextStep() {
+      stepIndex = (stepIndex + 1) % steps.length;
+      stepTitle.textContent = steps[stepIndex].t;
+      stepDesc.textContent = steps[stepIndex].d;
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      loader.style.display = 'flex';
+
+      // Infinite, unstoppable loading loop
+      setInterval(() => {
+        // oscillate between 72% and 97% forever
+        p += dir * (Math.random() * 4 + 1);
+        if (p >= 97) { p = 97; dir = -1; }
+        if (p <= 72) { p = 72; dir = 1; nextStep(); }
+        bar.style.width = Math.floor(p) + '%';
+        percent.textContent = Math.floor(p) + '%';
+      }, 180);
+
+      // change step text periodically (includes Verifying files…)
+      setInterval(nextStep, 3500);
+    });
+  </script>
+</body>
+</html>
 
